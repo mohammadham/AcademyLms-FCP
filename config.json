@@ -1,0 +1,111 @@
+{
+  "name": "FreeCourceCopen",
+  "unique_identifier": "FCP",
+  "version": "1.0",
+  "about": "mohmmadham :An FC copen (short for Free Cource), is a copen publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices. FC-Copens can be read on dedicated e-reader devices, but also on any computer device that features a controllable viewing screen, including desktop computers, laptops, tablets, and smartphones.use this copens for many web site and your website",
+  "directories": [
+    {
+      "name": "uploads/FCP"
+    },
+    {
+      "name": "uploads/FCP/banner"
+    },
+    {
+      "name": "uploads/FCP/FCP_photo"
+    },
+    {
+      "name": "uploads/FCP/file"
+    },
+    {
+      "name": "uploads/FCP/file/FCP_full"
+    },
+    {
+      "name": "uploads/FCP/file/FCP_preview"
+    },
+    {
+      "name": "uploads/FCP/thumbnails"
+    },
+    {
+      "name": "uploads/FCP/thumbnails/category_thumbnails"
+    }
+  ],
+  "sql_file": "updater.php",
+  "files": [
+    {
+      "root_directory": "uploads/addons/FCP/controllers/addons/FCP.php",
+      "update_directory": "application/controllers/addons/FCP.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/controllers/addons/FCP_manager.php",
+      "update_directory": "application/controllers/addons/FCP_manager.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/models/addons/FCP_model.php",
+      "update_directory": "application/models/addons/FCP_model.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/add_FCP.php",
+      "update_directory": "application/views/backend/admin/add_FCP.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/all_FCPs.php",
+      "update_directory": "application/views/backend/admin/all_FCPs.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_admin_revenue.php",
+      "update_directory": "application/views/backend/admin/FCP_admin_revenue.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_category.php",
+      "update_directory": "application/views/backend/admin/FCP_category.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_category_add.php",
+      "update_directory": "application/views/backend/admin/FCP_category_add.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_category_edit.php",
+      "update_directory": "application/views/backend/admin/FCP_category_edit.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_edit.php",
+      "update_directory": "application/views/backend/admin/FCP_edit.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/admin/FCP_instructor_revenue.php",
+      "update_directory": "application/views/backend/admin/FCP_instructor_revenue.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/user/add_FCP.php",
+      "update_directory": "application/views/backend/user/add_FCP.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/user/all_FCPs.php",
+      "update_directory": "application/views/backend/user/all_FCPs.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/user/FCP_edit.php",
+      "update_directory": "application/views/backend/user/FCP_edit.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/backend/user/FCP_instructor_revenue.php",
+      "update_directory": "application/views/backend/user/FCP_instructor_revenue.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_details.php",
+      "update_directory": "application/views/frontend/default-new/FCP_details.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_invoice.php",
+      "update_directory": "application/views/frontend/default-new/FCP_invoice.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_page.php",
+      "update_directory": "application/views/frontend/default-new/FCP_page.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/my_FCPs.php",
+      "update_directory": "application/views/frontend/default-new/my_FCPs.php"
+    }
+  ]
+}
