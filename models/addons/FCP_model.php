@@ -228,6 +228,7 @@ class FCP_model extends CI_Model
 
     public function add_FCP(){
         $data['title'] = htmlspecialchars($this->input->post('title'));
+        $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
         $data['description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
         $data['category_id'] = htmlspecialchars($this->input->post('category_id'));
         echo $_FILES['banner']['name'];
@@ -248,6 +249,7 @@ class FCP_model extends CI_Model
         }else{
             $data['banner'] = 'placeholder.png';
         }
+        /*
         if ($_FILES['FCP_preview_file']['name'] != "") {
             $ext  = (new SplFileInfo($_FILES['FCP_preview_file']['name']))->getExtension();
             $data['preview'] = md5(rand(10000000, 20000000)) .'.'. $ext;
@@ -258,10 +260,12 @@ class FCP_model extends CI_Model
             $data['file'] = md5(rand(10000000, 20000000)) .'.'. $ext;
             move_uploaded_file($_FILES['FCP_complete_file']['tmp_name'], 'uploads/FCP/file/FCP_full/' .$data['file']);
         }
+        */
         $data['user_id'] = $this->session->userdata('user_id');
       
 
         $data['price'] = $this->input->post('price');
+        $data['course_price'] = $this->input->post('course_price');
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
@@ -283,15 +287,17 @@ class FCP_model extends CI_Model
         $data['is_free'] = $free;
         $data['discount_flag'] = $flag;
         $data['added_date'] = strtotime(date('D, d-M-Y'));
-
+        $data['course_id'] = htmlspecialchars($this->input->post('course_id'));
         $this->db->insert('FCP', $data);
         return true;
     }
 
     public function update_FCP($FCP_id = ""){
         $data['title'] = htmlspecialchars($this->input->post('title'));
+        $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
         $data['description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
         $data['category_id'] = htmlspecialchars($this->input->post('category_id'));
+        $data['course_id'] = htmlspecialchars($this->input->post('course_id'));
         $FCP = $this->get_FCP_by_id($FCP_id)->row_array();
         if ($_FILES['thumbnail']['name'] != "") {
             $ext  = (new SplFileInfo($_FILES['thumbnail']['name']))->getExtension();
@@ -305,6 +311,7 @@ class FCP_model extends CI_Model
             $data['banner'] = md5(rand(10000000, 20000000)) .'.'. $ext;
             move_uploaded_file($_FILES['banner']['tmp_name'], 'uploads/FCP/banner/' . $data['banner']);
         }
+        /*
         if ($_FILES['FCP_preview_file']['name'] != "") {
             $ext  = (new SplFileInfo($_FILES['FCP_preview_file']['name']))->getExtension();
             unlink('uploads/FCP/file/FCP_preview/'.$FCP['preview']);
@@ -317,9 +324,10 @@ class FCP_model extends CI_Model
             $data['file'] = md5(rand(10000000, 20000000)) .'.'. $ext;
             move_uploaded_file($_FILES['FCP_complete_file']['tmp_name'], 'uploads/FCP/file/FCP_full/' .$data['file']);
         }
-      
+      */
 
         $data['price'] = $this->input->post('price');
+        $data['course_price'] = $this->input->post('course_price');
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
