@@ -194,6 +194,16 @@
                                                                 min="1">
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-2 col-form-label"
+                                                            for="price"><?php echo get_phrase('course_price').' ('.currency_code_and_symbol().')'; ?></label>
+                                                        <div class="col-md-10">
+                                                            <input type="number" class="form-control" id="price"
+                                                                name="price"
+                                                                placeholder="<?php echo get_phrase('enter_course_price'); ?>"
+                                                                min="1">
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row mb-3">
                                                         <div class="offset-md-2 col-md-10">
@@ -201,7 +211,7 @@
                                                                 <input type="checkbox" class="custom-control-input"
                                                                     name="discount_flag" id="discount_flag" value="1">
                                                                 <label class="custom-control-label"
-                                                                    for="discount_flag"><?php echo get_phrase('check_if_this_FCP_has_discount'); ?></label>
+                                                                    for="discount_flag"><?php echo get_phrase('check_if_this_Course_has_discount'); ?></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -215,10 +225,21 @@
                                                                 onkeyup="calculateDiscountPercentage(this.value)"
                                                                 min="0">
                                                             <small
-                                                                class="text-muted"><?php echo get_phrase('this_FCP_has'); ?>
+                                                                class="text-muted"><?php echo get_phrase('this_Course_has'); ?>
                                                                 <span id="discounted_percentage"
                                                                     class="text-danger">0%</span>
                                                                 <?php echo get_phrase('discount'); ?></small>
+                                                        </div>
+                                                    </div>
+                                                     <div class="form-group row mb-3">
+                                                        <label class="col-md-2 col-form-label"
+                                                            for="coupon"><?php echo get_phrase('coupon').' ('.currency_code_and_symbol().')'; ?></label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                name="coupon" id="coupon"
+                                                               
+                                                                min="0">
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
@@ -237,7 +258,7 @@
                                                         <input type="text" class="form-control" name="search_string" id="search_string" oninput="filterCourses()">
                                                         <p id="error_text" style="color: red; display: none;">No courses found.</p>
                                                     </div>
-                                                    <select class="form-control select2" data-toggle="select2" name="course_id" id="course_id" required>
+                                                    <select class="form-control select2" data-toggle="select2" name="course_id" id="course_id" >
                                                         <option value=""><?php echo get_phrase('select_a_course'); ?></option>
                                                         <?php 
                                                         $courses = $this->api_model->courses_by_search_string_get('');

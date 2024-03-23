@@ -18,6 +18,13 @@ $FCP = array(
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
+		'course_id' => array(
+		'type' => 'INT',
+		'constraint' => '11',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
 	'category_id' => array(
 		'type' => 'INT',
 		'constraint' => '11',
@@ -78,6 +85,10 @@ $FCP = array(
 		'collation' => 'utf8_unicode_ci'
 	),
 	'price' => array(
+		'type' => 'DOUBLE',
+		'collation' => 'utf8_unicode_ci'
+	),
+		'course_price' => array(
 		'type' => 'DOUBLE',
 		'collation' => 'utf8_unicode_ci'
 	),
