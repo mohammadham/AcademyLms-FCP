@@ -204,6 +204,16 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                                 class="text-danger error-message d-hidden"><?php echo get_phrase('minimum_required_value_1'); ?></span>
                                                         </div>
                                                     </div>
+                                                    <div class="form-group row mb-3">
+                                                        <label class="col-md-2 col-form-label"
+                                                            for="price"><?php echo get_phrase('course_price').' ('.currency_code_and_symbol().')'; ?></label>
+                                                        <div class="col-md-10">
+                                                            <input type="number" class="form-control" id="course_price"
+                                                                name="course_price"
+                                                                placeholder="<?php echo get_phrase('enter_course_price'); ?>"
+                                                                min="1">
+                                                        </div>
+                                                    </div>
 
                                                     <div class="form-group row mb-3">
                                                         <div class="offset-md-2 col-md-10">

@@ -18,7 +18,7 @@ $FCP = array(
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
-		'course_id' => array(
+	'course_id' => array(
 		'type' => 'INT',
 		'constraint' => '11',
 		'default' => null,
@@ -33,6 +33,13 @@ $FCP = array(
 		'collation' => 'utf8_unicode_ci'
 	),
 	'title' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'coupon' => array(
 		'type' => 'VARCHAR',
 		'constraint' => '255',
 		'default' => null,
@@ -88,7 +95,7 @@ $FCP = array(
 		'type' => 'DOUBLE',
 		'collation' => 'utf8_unicode_ci'
 	),
-		'course_price' => array(
+	'course_price' => array(
 		'type' => 'DOUBLE',
 		'collation' => 'utf8_unicode_ci'
 	),
