@@ -232,21 +232,22 @@
 
                                             <div class="col-xl-8">
                                                 <div class="form-group row mb-3">
-                                                    <label class="col-md-2 col-form-label"
-                                                        for="course_overview_url"><?php echo get_phrase('FCP_preview_file'); ?></label>
+                                                    <label class="col-md-2 col-form-label" for="course_overview_url"><?php echo get_phrase('Search_similar_courses'); ?></label>
                                                     <div class="col-md-10">
-                                                        <input type="file" class="form-control"
-                                                            name="FCP_preview_file" id="FCP_preview_file">
-
+                                                        <input type="text" class="form-control" name="search_string" id="search_string" oninput="filterCourses()">
+                                                        <p id="error_text" style="color: red; display: none;">No courses found.</p>
                                                     </div>
-
-                                                    <label class="col-md-2 col-form-label"
-                                                        for="FCP_complete_file"><?php echo get_phrase('FCP_complete_file'); ?></label>
-                                                    <div class="col-md-10">
-                                                        <input type="file" class="form-control"
-                                                            name="FCP_complete_file" id="FCP_complete_file">
-
-                                                    </div>
+                                                    <select class="form-control select2" data-toggle="select2" name="course_id" id="course_id" required>
+                                                        <option value=""><?php echo get_phrase('select_a_course'); ?></option>
+                                                        <?php 
+                                                        $courses = $this->api_model->courses_by_search_string_get('');
+                                                        foreach($courses as $course): 
+                                                        ?>
+                                                        <option value="<?php echo $course['course_id']; ?>">
+                                                            <?php echo $course['title']; ?>
+                                                        </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                             </div> <!-- end col -->
                                             <!-- this portion will be generated theme wise from the theme-config.json file Starts-->
@@ -371,6 +372,27 @@ function calculateDiscountPercentage(discounted_price) {
         }
     }
 }
+function filterCourses() {
+    var searchInput = document.getElementById('search_string').value.toLowerCase();
+    var courses = document.querySelectorAll('#course_id option');
+
+    var found = false;
+    courses.forEach(function(course) {
+        var courseTitle = course.textContent.toLowerCase();
+        if (courseTitle.includes(searchInput)) {
+            course.style.display = 'block';
+            found = true;
+        } else {
+            course.style.display = 'none';
+        }
+    });
+
+    var errorText = document.getElementById('error_text');
+    if (!found) {
+        errorText.style.display = 'block';
+    } else {
+        errorText.style.display = 'none';
+    }
 </script>
 
 <style media="screen">

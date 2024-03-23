@@ -3,7 +3,7 @@
         <div class="card">
             <div class="card-body py-2">
                 <h4 class="page-title"> <i class="mdi mdi-apple-keyboard-command title_icon"></i> <?php echo get_phrase('FCP_categories'); ?>
-                    <a href="javascirpt:;" onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/add_FCP_category'); ?>', '<?php echo get_phrase('add_a_new_FCP_category'); ?>');" class="btn btn-outline-primary btn-rounded alignToTitle"><i class="mdi mdi-plus"></i><?php echo get_phrase('add_new_category'); ?></a>
+                    <button onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/add_FCP_category'); ?>', '<?php echo get_phrase('add_a_new_FCP_category'); ?>');" class="btn btn-outline-primary btn-rounded alignToTitle"><i class="mdi mdi-plus"></i><?php echo get_phrase('add_new_category'); ?></button>
                 </h4>
             </div> <!-- end card body-->
         </div> <!-- end card -->
