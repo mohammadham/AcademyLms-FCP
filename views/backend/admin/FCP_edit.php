@@ -56,7 +56,7 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                         <a href="#media" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                             <i class="mdi mdi-library-video"></i>
                                             <span
-                                                class="d-none d-sm-inline"><?php echo get_phrase('FCP_files'); ?></span>
+                                                class="d-none d-sm-inline"><?php echo get_phrase('FCP_Courses'); ?></span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -233,6 +233,17 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                                 <?php echo get_phrase('discount'); ?></small>
                                                         </div>
                                                     </div>
+                                                     <div class="form-group row mb-3">
+                                                        <label class="col-md-2 col-form-label"
+                                                            for="coupon"><?php echo get_phrase('coupon').' ('.currency_code_and_symbol().')'; ?></label>
+                                                        <div class="col-md-10">
+                                                            <input type="text" class="form-control"
+                                                                name="coupon" id="coupon"
+                                                                
+                                                                min="0">
+                                                            
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
@@ -242,24 +253,24 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
 
 
 
-                                            <div class="col-xl-8">
+                                             <div class="col-xl-8">
                                                 <div class="form-group row mb-3">
-                                                    <label class="col-md-2 col-form-label"
-                                                        for="course_overview_url"><?php echo get_phrase('FCP_preview_file'); ?></label>
+                                                    <label class="col-md-2 col-form-label" for="course_overview_url"><?php echo get_phrase('Search_similar_courses'); ?></label>
                                                     <div class="col-md-10">
-                                                        <input type="file" class="form-control" value="hi"
-                                                            name="FCP_preview_file" id="FCP_preview_file">
-
+                                                        <input type="text" class="form-control" name="search_string" id="search_string" oninput="filterCourses()">
+                                                        <p id="error_text" style="color: red; display: none;">No courses found.</p>
                                                     </div>
-
-                                                    <label class="col-md-2 col-form-label"
-                                                        for="FCP_complete_file"><?php echo get_phrase('FCP_complete_file'); ?></label>
-                                                    <div class="col-md-10">
-                                                        <input type="file" class="form-control"
-                                                            value="<?php echo $FCP['file']; ?>"
-                                                            name="FCP_complete_file" id="FCP_complete_file">
-
-                                                    </div>
+                                                    <select class="form-control select2" data-toggle="select2" name="course_id" id="course_id" >
+                                                        <option value=""><?php echo get_phrase('select_a_course'); ?></option>
+                                                        <?php 
+                                                        $courses = $this->api_model->courses_by_search_string_get('');
+                                                        foreach($courses as $course): 
+                                                        ?>
+                                                        <option value="<?php echo $course['course_id']; ?>">
+                                                            <?php echo $course['title']; ?>
+                                                        </option>
+                                                        <?php endforeach; ?>
+                                                    </select>
                                                 </div>
                                             </div> <!-- end col -->
                                             <!-- this portion will be generated theme wise from the theme-config.json file Starts-->

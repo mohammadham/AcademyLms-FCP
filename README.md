@@ -1,12 +1,12 @@
 FCP Addon for Academy LMS
-FCP:Free course copens
-This project is a FCP addon for Academy LMS that allows users to create and share copens of all platforms. Users can add categories, courses, descriptions, titles, prices, and more.
+FCP:Free course coupons
+This project is a FCP addon for Academy LMS that allows users to create and share coupon of all platforms. Users can add categories, courses, descriptions, titles, prices, and more.
 Installation
 To activate this addon in your Academy LMS, follow these steps:
 
-			### Route Configuration
+### Route Configuration
 		
-		- **Path:** `application/config/routes.php`
+- **Path:** `application/config/routes.php`
 		
 		```php
 		// FCP
@@ -19,9 +19,10 @@ To activate this addon in your Academy LMS, follow these steps:
 		$route['FCP/buy/(:any)'] = "addons/FCP/buy/$1";
 		$route['home/my_FCPs'] = "addons/FCP/my_FCPs";
 		//end FCP
-		### Update header_lg_device.php
-		- **Path:** 'application/views/frontend/default-new/header_lg_device.php'
-		- **Line:** 124
+### Update header_lg_device.php
+- **Path:** 'application/views/frontend/default-new/header_lg_device.php'
+- **Line:** 124
+
 		```php
 		<!-- FCP addon -->
 		<?php if(addon_status('FCP')): ?>
@@ -47,9 +48,10 @@ To activate this addon in your Academy LMS, follow these steps:
 			</ul>
 		<?php endif; ?>
 		<!-- FCP addon -->
-		### Update header_sm_device.php
-		- **Path:** 'application/views/frontend/default-new/header_sm_device.php'
-		- **Line:** 124
+### Update header_sm_device.php
+- **Path:** 'application/views/frontend/default-new/header_sm_device.php'
+- **Line:** 124
+
 		```php
 		<!-- FCP addon -->
 		<?php if(addon_status('FCP')): ?>
@@ -75,9 +77,10 @@ To activate this addon in your Academy LMS, follow these steps:
 			</ul>
 		<?php endif; ?>
 		<!-- FCP addon -->
-		### Update navigation.php
-		- **Path:** 'application/views/backend/admin/navigation.php'
-		- **Line:** 82
+### Update navigation.php
+- **Path:** 'application/views/backend/admin/navigation.php'
+- **Line:** 82
+
 		```php
 		<!-- FCP Addon -->
 		<?php if (addon_status('FCP')) : ?>
