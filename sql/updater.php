@@ -52,6 +52,13 @@ $FCP = array(
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
+	,
+	'short_description' => array(
+		'type' => 'TEXT',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
 	'thumbnail' => array(
 		'type' => 'VARCHAR',
 		'constraint' => '255',
@@ -97,6 +104,11 @@ $FCP = array(
 	),
 	'course_price' => array(
 		'type' => 'DOUBLE',
+		'collation' => 'utf8_unicode_ci'
+	),
+	,
+	'course_duration' => array(
+		'type' => 'INT',
 		'collation' => 'utf8_unicode_ci'
 	),
 	'added_date' => array(
