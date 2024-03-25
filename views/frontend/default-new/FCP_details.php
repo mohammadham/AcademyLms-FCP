@@ -2,14 +2,8 @@
 $FCP_details = $this->FCP_model->get_FCP_by_id($FCP_id)->row_array();
 $instructor_details = $this->user_model->get_all_user($FCP_details['user_id'])->row_array();
 $category_details = $this->FCP_model->get_categories($FCP_details['category_id'])->row_array();
-$path = base_url('uploads/FCP/file/FCP_preview/'.$FCP_details['preview']);
-$totoalPages = countPages($path);
+var_dump($category_details);
 
-function countPages($path) {
-    $pdftext = file_get_contents($path);
-    $num = preg_match_all("/\/Page\W/", $pdftext, $dummy);
-    return $num;
-}
 
 $user_id = $this->session->userdata('user_id');
                               
@@ -28,9 +22,6 @@ $user_id = $this->session->userdata('user_id');
         border: 0.5px solid #dddddd;
     }
 </style>
-<!---------- Bread Crumb Area Start ---------->
-<?php include "breadcrumb.php"; ?>
-<!---------- Bread Crumb Area End ---------->
 
 <!-- Start FCP Details -->
 <section class="pt-100 pb-80">
@@ -78,15 +69,11 @@ $user_id = $this->session->userdata('user_id');
                             aria-label="Close"></button>
                     </div>
                     <div class="FCP-modal d-grid justify-content-center">
-                        <?php if(!empty($FCP_details['preview'])): ?>
-                        <object
-                            data="<?php echo base_url('uploads/FCP/file/FCP_preview/'.$FCP_details['preview'].'#toolbar=0') ?>"
-                            height="500px" width="800px"></object>
-                        <?php else: ?>
+                        
                             <div class="w-100 text-center py-5 my-5">
                                 <img width="200px" class="" src="<?php echo site_url('assets/global/image/no-preview-available.png'); ?>">
                             </div>
-                        <?php endif ?>
+                        
                     </div>
 
                 </div>
@@ -139,10 +126,7 @@ $user_id = $this->session->userdata('user_id');
                         <th><?php echo get_phrase('Edition');?></td>
                         <td><?php echo $FCP_details['edition'] ?></td>
                     </tr>
-                    <tr>
-                        <th><?php echo get_phrase('No. of page');?></td>
-                        <td><?php echo $totoalPages ?></td>
-                    </tr>
+                    
                 </table>
             </div>
         </div>

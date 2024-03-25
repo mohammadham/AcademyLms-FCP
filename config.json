@@ -108,6 +108,10 @@
       "update_directory": "application/views/frontend/default-new/my_FCPs.php"
     },
     {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_Coupon.php",
+      "update_directory": "application/views/frontend/default-new/FCP_Coupon.php"
+    },
+    {
       "root_directory": "uploads/addons/FCP/assets/playing-page/css/tailwind.min.css",
       "update_directory": "assets/playing-page/css/tailwind.min.css"
     }

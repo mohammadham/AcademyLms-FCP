@@ -161,7 +161,7 @@ $number_of_visible_categories = 10;
                                                                 </span>
                                                             
                                                             
-                                                            <span class="compare-img checkPropagation " style="background-color: #ffc107;color:black; hover:background-color:#ffc;"  onclick="showAjaxModal('<?php echo site_url('addon/FCP_manager/coupon_FCP_show/'.$latest_course['coupon']); ?>', '<?php echo get_phrase('Coupon_Details'); ?>');">
+                                                            <span class="compare-img checkPropagation " style="background-color: #ffc107;color:black; hover:background-color:#ffc;"  onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/coupon_FCP_show/'.$latest_course['coupon']); ?>', '<?php echo get_phrase('Coupon_Details'); ?>');">
                                                                     <img loading="lazy" style="color: white" src="<?php echo base_url('assets/frontend/default-new/image/Group 17906.png') ?>">
                                                                     <?php echo get_phrase('show_coupon_code'); ?>
                                                                 </span>

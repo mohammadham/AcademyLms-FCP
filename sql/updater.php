@@ -109,6 +109,9 @@ $FCP = array(
 	,
 	'course_duration' => array(
 		'type' => 'INT',
+		'constraint' => '11',
+		'default' => null,
+		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
 	'added_date' => array(
