@@ -2,7 +2,7 @@
   "name": "FreeCourceCopen",
   "unique_identifier": "FCP",
   "version": "1.0",
-  "about": "mohmmadham :An FC copen (short for Free Cource), is a copen publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices. FC-Copens can be read on dedicated e-reader devices, but also on any computer device that features a controllable viewing screen, including desktop computers, laptops, tablets, and smartphones.use this copens for many web site and your website",
+  "about": "mohmmadham :An FCP coupon (short for Free Course), is a copen publication made available in digital form, consisting of text, images, or both, readable on the flat-panel display of computers or other electronic devices. FC-coupons can be read on dedicated e-reader devices, but also on any computer device that features a controllable viewing screen, including desktop computers, laptops, tablets, and smartphones.use this coupon for many website and your website",
   "directories": [
     {
       "name": "uploads/FCP"
@@ -106,6 +106,14 @@
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/my_FCPs.php",
       "update_directory": "application/views/frontend/default-new/my_FCPs.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_Coupon.php",
+      "update_directory": "application/views/frontend/default-new/FCP_Coupon.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/assets/playing-page/css/tailwind.min.css",
+      "update_directory": "assets/playing-page/css/tailwind.min.css"
     }
   ]
 }

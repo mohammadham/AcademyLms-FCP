@@ -59,7 +59,7 @@ To activate this addon in your Academy LMS, follow these steps:
 			<ul class="navbar-nav main-nav-wrap mb-2 mb-lg-0 ms-2">
 				<li class="nav-item">
 					<a class="nav-link header-dropdown bg-white text-dark fw-600 text-nowrap" href="#" id="navbarDropdown1">
-						<span class="ms-2"><?php echo get_phrase('FCP'); ?></span>
+						<span class="ms-2"><?php echo get_phrase('Coupons'); ?></span>
 						<i class="fas fa-angle-down ms-1"></i>
 					</a>
 					<ul class="navbarHover">
@@ -87,7 +87,7 @@ To activate this addon in your Academy LMS, follow these steps:
 			<li class="side-nav-item">
 				<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'all_FCPs' || $page_name == 'add_FCP' || $page_name == 'FCP_edit') : ?> active <?php endif; ?>">
 					<i class="dripicons-ticket"></i>
-					<span> <?php echo get_phrase('FCP'); ?> </span>
+					<span> <?php echo get_phrase('Coupons'); ?> </span>
 					<span class="menu-arrow"></span>
 				</a>
 				<ul class="side-nav-second-level <?php if ($page_name == 'FCP_edit') echo 'in'; ?>" aria-expanded="false">
@@ -105,5 +105,12 @@ To activate this addon in your Academy LMS, follow these steps:
 			</li>
 		<?php endif; ?>
 		<!-- FCP Addon -->
+
+### Update includes_top.php
+- **Path:** 'application\views\frontend\default-new\includes_top.php'
+- **Description:** 'add blelow code to this file'
+	```php
+	<!-- tailwind CSS -->
+    <link href="<?php echo site_url('assets/playing-page/') ?>css/tailwind.min.css" rel="stylesheet" />
 
 if you can beter this addon please fork and after edit send to me your code :).
