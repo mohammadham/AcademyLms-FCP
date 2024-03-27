@@ -52,7 +52,6 @@ $FCP = array(
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
-	,
 	'short_description' => array(
 		'type' => 'TEXT',
 		'default' => null,
