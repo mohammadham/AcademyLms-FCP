@@ -82,7 +82,7 @@ class FCP_manager extends CI_Controller
     }
     public function coupon_FCP_show($coupon = ""){
         $data['Coupon']=$coupon;
-        $this->load->view("backend/admin/FCP_Coupon",$data);
+        $this->load->view("FCP_view/FCP_Coupon",$data);
     }
     public function edit_FCP_category($category_id = ""){
         $data['FCP_category'] = $this->FCP_model->get_FCP_categories($category_id)->row_array();
