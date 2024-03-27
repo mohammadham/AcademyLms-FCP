@@ -27,7 +27,11 @@
     },
     {
       "name": "uploads/FCP/thumbnails/category_thumbnails"
+    },
+    {
+      "name": "application/views/FCP_View"
     }
+
   ],
   "sql_file": "updater.php",
   "files": [
@@ -93,23 +97,83 @@
     },
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_details.php",
-      "update_directory": "application/views/frontend/default-new/FCP_details.php"
+      "update_directory": "application/views/FCP_View/FCP_details.php"
     },
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_invoice.php",
-      "update_directory": "application/views/frontend/default-new/FCP_invoice.php"
+      "update_directory": "application/views/FCP_View/FCP_invoice.php"
     },
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_page.php",
-      "update_directory": "application/views/frontend/default-new/FCP_page.php"
+      "update_directory": "application/views/FCP_View/FCP_page.php"
     },
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/my_FCPs.php",
-      "update_directory": "application/views/frontend/default-new/my_FCPs.php"
+      "update_directory": "application/views/FCP_View/my_FCPs.php"
     },
     {
       "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCP_Coupon.php",
-      "update_directory": "application/views/frontend/default-new/FCP_Coupon.php"
+      "update_directory": "application/views/FCP_View/FCP_Coupon.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/modal.php",
+      "update_directory": "application/views/FCP_View/modal.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/index.php",
+      "update_directory": "application/views/FCP_View/index.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/includes_top.php",
+      "update_directory": "application/views/FCP_View/includes_top.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/includes_bottom.php",
+      "update_directory": "application/views/FCP_View/includes_bottom.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/header_sm_device.php",
+      "update_directory": "application/views/FCP_View/header_sm_device.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/header_lg_device.php",
+      "update_directory": "application/views/FCP_View/header_lg_device.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/header.php",
+      "update_directory": "application/views/FCP_View/header.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/go_back_to_mobile_app.php",
+      "update_directory": "application/views/FCP_View/go_back_to_mobile_app.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/footer.php",
+      "update_directory": "application/views/FCP_View/footer.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCPs_page_sorting_section.php",
+      "update_directory": "application/views/FCP_View/FCPs_page_sorting_section.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCPs_page_sidebar.php",
+      "update_directory": "application/views/FCP_View/FCPs_page_sidebar.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCPs_page_list_layout.php",
+      "update_directory": "application/views/FCP_View/FCPs_page_list_layout.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/FCPs_page_grid_layout.php",
+      "update_directory": "application/views/FCP_View/FCPs_page_grid_layout.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/eu-cookie.php",
+      "update_directory": "application/views/FCP_View/eu-cookie.php"
+    },
+    {
+      "root_directory": "uploads/addons/FCP/views/frontend/default-new/breadcrumb.php",
+      "update_directory": "application/views/FCP_View/breadcrumb.php"
     },
     {
       "root_directory": "uploads/addons/FCP/assets/playing-page/css/tailwind.min.css",

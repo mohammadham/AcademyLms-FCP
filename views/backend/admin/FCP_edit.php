@@ -116,12 +116,26 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                         placeholder="<?php echo get_phrase('enter_publication_name'); ?>"
                                                         required>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label for="edition"><?php echo get_phrase('edition'); ?></label>
-                                                    <input type="text" class="form-control" name="edition" id="edition"
-                                                        value="<?php echo $FCP['edition'] ?>"
-                                                        placeholder="<?php echo get_phrase('enter_edition'); ?>"
-                                                        required>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('bade_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="bade_url" id="bade_url" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('base_course_name'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="base_course_name" id="base_course_name" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('enrol_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="enrol_url" id="enrol_url" class="form-control"></input>
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group mb-3">

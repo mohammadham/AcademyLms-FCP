@@ -79,8 +79,23 @@ $FCP = array(
 		'default' => null,
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
+	)
+	,
+	'base_course_name' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
 	),
-	'edition' => array(
+	'base_url' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'enrol_Url' => array(
 		'type' => 'VARCHAR',
 		'constraint' => '255',
 		'default' => null,
@@ -138,13 +153,6 @@ $FCP = array(
 	'is_free' => array(
 		'type' => 'INT',
 		'constraint' => '11',
-		'default' => null,
-		'null' => TRUE,
-		'collation' => 'utf8_unicode_ci'
-	),
-	'preview' => array(
-		'type' => 'VARCHAR',
-		'constraint' => '255',
 		'default' => null,
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'

@@ -111,9 +111,23 @@
                                                 </div>
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('edition'); ?></label>
+                                                        for="description"><?php echo get_phrase('bade_url'); ?></label>
                                                     <div class="col-md-12">
-                                                        <input name="edition" id="edition" class="form-control"></input>
+                                                        <input name="bade_url" id="bade_url" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('base_course_name'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="base_course_name" id="base_course_name" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('enrol_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="enrol_url" id="enrol_url" class="form-control"></input>
                                                     </div>
                                                 </div>
 
