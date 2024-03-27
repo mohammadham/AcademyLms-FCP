@@ -46,19 +46,7 @@ $user_id = $this->session->userdata('user_id');
                 </p>
                 <p class="info"><?php echo get_phrase('category_name') ?> : <span><?php echo $category_details['title'] ?></span></p>
             </div>
-            <div class="FCP-content mt-4">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#FCPModal"><?php echo get_phrase('read_preview') ?></button>
-                <?php if($FCP_details['is_free']): ?>
-                    <a href="<?php echo base_url('addons/FCP/download_FCP_file/'.$FCP_details['FCP_id']) ?>" class="btn btn-primary" type="button"><?php echo site_phrase('free_download'); ?></a>
-                <?php else: ?>
-                    <?php if($this->db->get_where('FCP_payment', array('user_id' => $this->session->userdata('user_id'), 'FCP_id' => $FCP_details['FCP_id']))->num_rows() > 0): ?>
-                        <a href="<?php echo base_url('home/my_FCPs') ?>" class="btn btn-primary"
-                        type="button"><?php echo site_phrase('already_purchased'); ?></a>
-                    <?php else: ?>
-                        <a href="<?php echo base_url('FCP/buy/'.$FCP_details['FCP_id']) ?>" class="btn btn-primary" type="button"><?php echo site_phrase('buy_now'); ?></a>
-                    <?php endif; ?>
-                <?php endif; ?>
-            </div>
+            
         </div>
         <!-- Modal -->
         <div class="modal fade" id="FCPModal" tabindex="-1" aria-labelledby="FCPModalLabel" aria-hidden="true">
@@ -123,8 +111,8 @@ $user_id = $this->session->userdata('user_id');
                         <td><?php echo $FCP_details['publication_name'] ?></td>
                     </tr>
                     <tr>
-                        <th><?php echo get_phrase('Edition');?></td>
-                        <td><?php echo $FCP_details['edition'] ?></td>
+                        <th><?php echo get_phrase('bade_url');?></td>
+                        <td><?php echo $FCP_details['bade_url'] ?></td>
                     </tr>
                     
                 </table>

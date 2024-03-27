@@ -19,7 +19,34 @@ To activate this addon in your Academy LMS, follow these steps:
 		$route['FCP/buy/(:any)'] = "addons/FCP/buy/$1";
 		$route['home/my_FCPs'] = "addons/FCP/my_FCPs";
 		//end FCP
+### Update navigation.php
+- **Path:** 'application/views/backend/admin/navigation.php'
+- **Line:** 82
+		  <!-- FCP Addon -->
+			  <?php if (addon_status('FCP')) : ?>
+  				<li class="side-nav-item">
+  					<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'all_FCPs' || $page_name == 'add_FCP' || $page_name == 'FCP_edit') : ?> active <?php endif; ?>">
+  						<i class="dripicons-ticket"></i>
+  						<span> <?php echo get_phrase('Coupons'); ?> </span>
+  						<span class="menu-arrow"></span>
+  					</a>
+  					<ul class="side-nav-second-level <?php if ($page_name == 'FCP_edit') echo 'in'; ?>" aria-expanded="false">
+  						<li class="<?php if ($page_name == 'all_FCPs' || $page_name == 'FCP_edit') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP'); ?>"><?php echo get_phrase('all_FCPs'); ?></a>
+  						</li>
+  						<li class="<?php if ($page_name == 'add_FCP') echo 'active'; ?>">
+  							<a href="<?php echo site_url('FCP_manager/add_FCP'); ?>"><?php echo get_phrase('add_FCP'); ?></a>
+  						</li>
+
+  						<li class="<?php if ($page_name == 'FCP_category') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP_category'); ?>"><?php echo get_phrase('category'); ?></a>
+  						</li>
+  					</ul>
+  				</li>
+			  <?php endif; ?>
+		<!-- FCP Addon -->
 ### Update header_lg_device.php
+- **Attention:** if you use lite version or old version use this part
 - **Path:** 'application/views/frontend/default-new/header_lg_device.php'
 - **Line:** 124
 
@@ -49,6 +76,7 @@ To activate this addon in your Academy LMS, follow these steps:
 		<?php endif; ?>
 		<!-- FCP addon -->
 ### Update header_sm_device.php
+- **Attention:** if you use lite version or old version use this part
 - **Path:** 'application/views/frontend/default-new/header_sm_device.php'
 - **Line:** 124
 
@@ -77,40 +105,14 @@ To activate this addon in your Academy LMS, follow these steps:
 			</ul>
 		<?php endif; ?>
 		<!-- FCP addon -->
-### Update navigation.php
-- **Path:** 'application/views/backend/admin/navigation.php'
-- **Line:** 82
 
-		```php
-		<!-- FCP Addon -->
-		<?php if (addon_status('FCP')) : ?>
-			<li class="side-nav-item">
-				<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'all_FCPs' || $page_name == 'add_FCP' || $page_name == 'FCP_edit') : ?> active <?php endif; ?>">
-					<i class="dripicons-ticket"></i>
-					<span> <?php echo get_phrase('Coupons'); ?> </span>
-					<span class="menu-arrow"></span>
-				</a>
-				<ul class="side-nav-second-level <?php if ($page_name == 'FCP_edit') echo 'in'; ?>" aria-expanded="false">
-					<li class="<?php if ($page_name == 'all_FCPs' || $page_name == 'FCP_edit') echo 'active'; ?>">
-						<a href="<?php echo site_url('addons/FCP_manager/FCP'); ?>"><?php echo get_phrase('all_FCPs'); ?></a>
-					</li>
-					<li class="<?php if ($page_name == 'add_FCP') echo 'active'; ?>">
-						<a href="<?php echo site_url('FCP_manager/add_FCP'); ?>"><?php echo get_phrase('add_FCP'); ?></a>
-					</li>
-
-					<li class="<?php if ($page_name == 'FCP_category') echo 'active'; ?>">
-						<a href="<?php echo site_url('addons/FCP_manager/FCP_category'); ?>"><?php echo get_phrase('category'); ?></a>
-					</li>
-				</ul>
-			</li>
-		<?php endif; ?>
-		<!-- FCP Addon -->
 
 ### Update includes_top.php
+- **Attention:** if you use lite version or old version use this part
 - **Path:** 'application\views\frontend\default-new\includes_top.php'
 - **Description:** 'add blelow code to this file'
-	```php
 	<!-- tailwind CSS -->
-    <link href="<?php echo site_url('assets/playing-page/') ?>css/tailwind.min.css" rel="stylesheet" />
+		<link href="<?php echo site_url('assets/playing-page/') ?>css/tailwind.min.css" rel="stylesheet" />
+	<!-- tailwind CSS -->
 
 if you can beter this addon please fork and after edit send to me your code :).
