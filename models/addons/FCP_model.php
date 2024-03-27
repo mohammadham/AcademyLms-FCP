@@ -228,8 +228,13 @@ class FCP_model extends CI_Model
 
     public function add_FCP(){
         $data['title'] = htmlspecialchars($this->input->post('title'));
+        
+        $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+        $data['enrol_Url'] = htmlspecialchars($this->input->post('enrol_Url'));
+        $data['base_course_name'] = htmlspecialchars($this->input->post('base_course_name'));
         $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
         $data['description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
+        $data['short_description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
         $data['category_id'] = htmlspecialchars($this->input->post('category_id'));
         echo $_FILES['banner']['name'];
         echo $_FILES['thumbnail']['name'];
@@ -269,9 +274,9 @@ class FCP_model extends CI_Model
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
-        $data['bade_url'] = $this->input->post('bade_url');
-        $data['base_course_name'] = $this->input->post('base_course_name');
-        $data['enrol_url'] = $this->input->post('enrol_url');
+        // $data['bade_url'] = $this->input->post('bade_url');
+        // $data['base_course_name'] = $this->input->post('base_course_name');
+        // $data['enrol_url'] = $this->input->post('enrol_url');
         if($flag != 1){
             $flag = 0;
 
@@ -286,6 +291,7 @@ class FCP_model extends CI_Model
             $data['is_active'] = 0;
         }
         $data['discounted_price'] = $this->input->post('discounted_price');
+        $data['course_duration'] = $this->input->post('course_duration');
         $data['is_free'] = $free;
         $data['discount_flag'] = $flag;
         $data['added_date'] = strtotime(date('D, d-M-Y'));
@@ -296,10 +302,14 @@ class FCP_model extends CI_Model
 
     public function update_FCP($FCP_id = ""){
         $data['title'] = htmlspecialchars($this->input->post('title'));
+        
+        $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+        $data['enrol_Url'] = htmlspecialchars($this->input->post('enrol_Url'));
+        $data['base_course_name'] = htmlspecialchars($this->input->post('base_course_name'));
         $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
         $data['description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
+        $data['short_description'] = htmlspecialchars(remove_js($this->input->post('description', false)));
         $data['category_id'] = htmlspecialchars($this->input->post('category_id'));
-        $data['course_id'] = htmlspecialchars($this->input->post('course_id'));
         $FCP = $this->get_FCP_by_id($FCP_id)->row_array();
         if ($_FILES['thumbnail']['name'] != "") {
             $ext  = (new SplFileInfo($_FILES['thumbnail']['name']))->getExtension();
@@ -333,9 +343,9 @@ class FCP_model extends CI_Model
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
-        $data['bade_url'] = $this->input->post('bade_url');
-        $data['base_course_name'] = $this->input->post('base_course_name');
-        $data['enrol_url'] = $this->input->post('enrol_url');
+        // $data['bade_url'] = $this->input->post('bade_url');
+        // $data['base_course_name'] = $this->input->post('base_course_name');
+        // $data['enrol_url'] = $this->input->post('enrol_url');
         
 
         if($flag != 1){
@@ -347,6 +357,7 @@ class FCP_model extends CI_Model
         }
 
         $data['discounted_price'] = $this->input->post('discounted_price');
+        $data['course_duration'] = $this->input->post('course_duration');
         $data['is_free'] = $free;
         $data['discount_flag'] = $flag;
         $data['added_date'] = strtotime(date('D, d-M-Y'));

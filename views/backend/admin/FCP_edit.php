@@ -45,6 +45,12 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                             <span class="d-none d-sm-inline"><?php echo get_phrase('basic'); ?></span>
                                         </a>
                                     </li>
+                                    <li class="nav-item">
+                                        <a href="#Coupon" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                            <i class="mdi mdi-fountain-pen-tip"></i>
+                                            <span class="d-none d-sm-inline"><?php echo get_phrase('Coupon'); ?></span>
+                                        </a>
+                                    </li>
 
                                     <li class="nav-item">
                                         <a href="#pricing" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
@@ -53,10 +59,10 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#media" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                        <a href="#course" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                             <i class="mdi mdi-library-video"></i>
                                             <span
-                                                class="d-none d-sm-inline"><?php echo get_phrase('FCP_Courses'); ?></span>
+                                                class="d-none d-sm-inline"><?php echo get_phrase('course'); ?></span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -107,6 +113,14 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                             class="form-control"><?php echo $FCP['description']; ?></textarea>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="short_description"><?php echo get_phrase('short_description'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <textarea name="short_description" id="short_description"
+                                                            class="form-control"><?php echo $FCP['short_description']; ?></textarea>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <label
                                                         for="publication_name"><?php echo get_phrase('publication_name'); ?></label>
@@ -116,27 +130,7 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                         placeholder="<?php echo get_phrase('enter_publication_name'); ?>"
                                                         required>
                                                 </div>
-                                                <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('bade_url'); ?></label>
-                                                    <div class="col-md-12">
-                                                        <input name="bade_url" id="bade_url" class="form-control" ></input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('base_course_name'); ?></label>
-                                                    <div class="col-md-12">
-                                                        <input name="base_course_name" id="base_course_name" class="form-control" ></input>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('enrol_url'); ?></label>
-                                                    <div class="col-md-12">
-                                                        <input name="enrol_url" id="enrol_url" class="form-control"></input>
-                                                    </div>
-                                                </div>
+                                                
 
                                                 <div class="form-group mb-3">
                                                     <label
@@ -186,6 +180,42 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
 
 
 
+                                            </div>
+                                        </div>
+                                    </div> <!-- end tab pane -->
+                                    <div class="tab-pane mt-4" id="Coupon">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-10">
+
+                                            <h4 class='mb-3'><?php echo get_phrase('Coupon_Setting'); ?>
+
+                                                <div class="form-group">
+                                                    <label for="coupon"><?php echo get_phrase('coupon'); ?></label>
+                                                    <input type="text" class="form-control" name="coupon" id="coupon"
+                                                        value="<?php echo $FCP['coupon'] ?>"
+                                                        placeholder="<?php echo get_phrase('enter_coupon'); ?>"
+                                                        required>
+                                                </div>
+
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('bade_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input 
+                                                        value="<?php echo $FCP['bade_url'] ?>"
+                                                        name="bade_url" id="bade_url" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="description"><?php echo get_phrase('enrol_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input 
+                                                        value="<?php echo $FCP['enrol_url'] ?>"
+                                                        name="enrol_url" id="enrol_url" class="form-control"></input>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div> <!-- end tab pane -->
@@ -257,22 +287,12 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                                 <?php echo get_phrase('discount'); ?></small>
                                                         </div>
                                                     </div>
-                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-2 col-form-label"
-                                                            for="coupon"><?php echo get_phrase('coupon').' ('.currency_code_and_symbol().')'; ?></label>
-                                                        <div class="col-md-10">
-                                                            <input type="text" class="form-control"
-                                                                name="coupon" id="coupon"
-                                                                
-                                                                min="0">
-                                                            
-                                                        </div>
-                                                    </div>
+                                                     
                                                 </div>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
                                     </div> <!-- end tab-pane -->
-                                    <div class="tab-pane mt-4" id="media">
+                                    <div class="tab-pane mt-4" id="course">
                                         <div class="row justify-content-center">
 
 
@@ -295,6 +315,24 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                         </option>
                                                         <?php endforeach; ?>
                                                     </select>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="base_course_name"><?php echo get_phrase('base_course_name'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input 
+                                                        value="<?php echo $FCP['base_course_name'] ?>"
+                                                        name="base_course_name" id="base_course_name" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="course_duration"><?php echo get_phrase('course_duration'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input 
+                                                        value="<?php echo $FCP['course_duration'] ?>"
+                                                        type="number" name="course_duration" id="course_duration" class="form-control" ></input>
+                                                    </div>
                                                 </div>
                                             </div> <!-- end col -->
                                             <!-- this portion will be generated theme wise from the theme-config.json file Starts-->
