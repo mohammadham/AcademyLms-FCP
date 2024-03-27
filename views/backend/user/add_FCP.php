@@ -41,16 +41,23 @@
                                     </li>
 
                                     <li class="nav-item">
+                                        <a href="#Coupon" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                            <i class="mdi mdi-fountain-pen-tip"></i>
+                                            <span class="d-none d-sm-inline"><?php echo get_phrase('Coupon'); ?></span>
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
                                         <a href="#pricing" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                             <i class="mdi mdi-currency-cny"></i>
                                             <span class="d-none d-sm-inline"><?php echo get_phrase('pricing'); ?></span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#media" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
+                                        <a href="#course" data-toggle="tab" class="nav-link rounded-0 pt-2 pb-2">
                                             <i class="mdi mdi-library-video"></i>
                                             <span
-                                                class="d-none d-sm-inline"><?php echo get_phrase('FCP_files'); ?></span>
+                                                class="d-none d-sm-inline"><?php echo get_phrase('Course'); ?></span>
                                         </a>
                                     </li>
                                     <li class="nav-item">
@@ -100,6 +107,14 @@
                                                             class="form-control"></textarea>
                                                     </div>
                                                 </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="short_description"><?php echo get_phrase('short_description'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <textarea name="short_description" id="short_description"
+                                                            class="form-control"></textarea>
+                                                    </div>
+                                                </div>
 
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label"
@@ -109,13 +124,7 @@
                                                             class="form-control"></input>
                                                     </div>
                                                 </div>
-                                                <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('edition'); ?></label>
-                                                    <div class="col-md-12">
-                                                        <input name="edition" id="edition" class="form-control"></input>
-                                                    </div>
-                                                </div>
+                                                
 
                                                 <div class="form-group mb-3">
                                                     <label
@@ -168,6 +177,40 @@
                                             </div>
                                         </div>
                                     </div> <!-- end tab pane -->
+                                    <div class="tab-pane mt-4" id="Coupon">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-10">
+
+                                                <h4 class='mb-3'><?php echo get_phrase('Coupon_Setting'); ?>
+                                                </h4>
+
+                                                <div class="form-group">
+                                                    <label for="coupon"><?php echo get_phrase('Coupon'); ?></label>
+                                                    <input type="text" class="form-control" name="coupon" id="coupon"
+                                                        placeholder="<?php echo get_phrase('enter_coupon'); ?>"
+                                                        required>
+                                                </div>
+
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="bade_url"><?php echo get_phrase('bade_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="bade_url" id="bade_url" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="enrol_url"><?php echo get_phrase('enrol_url'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="enrol_url" id="enrol_url" class="form-control"></input>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end tab pane -->
                                     <div class="tab-pane mt-4" id="pricing">
                                         <div class="row justify-content-center">
                                             <div class="col-xl-8">
@@ -211,7 +254,7 @@
                                                                 <input type="checkbox" class="custom-control-input"
                                                                     name="discount_flag" id="discount_flag" value="1">
                                                                 <label class="custom-control-label"
-                                                                    for="discount_flag"><?php echo get_phrase('check_if_this_Course_has_discount'); ?></label>
+                                                                    for="discount_flag"><?php echo get_phrase('check_if_this_Cource_has_discount'); ?></label>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -231,22 +274,12 @@
                                                                 <?php echo get_phrase('discount'); ?></small>
                                                         </div>
                                                     </div>
-                                                     <div class="form-group row mb-3">
-                                                        <label class="col-md-2 col-form-label"
-                                                            for="coupon"><?php echo get_phrase('coupon').' ('.currency_code_and_symbol().')'; ?></label>
-                                                        <div class="col-md-10">
-                                                            <input type="text" class="form-control"
-                                                                name="coupon" id="coupon"
-                                                               
-                                                                min="0">
-                                                            
-                                                        </div>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div> <!-- end col -->
                                         </div> <!-- end row -->
                                     </div> <!-- end tab-pane -->
-                                    <div class="tab-pane mt-4" id="media">
+                                    <div class="tab-pane mt-4" id="course">
                                         <div class="row justify-content-center">
 
 
@@ -269,6 +302,21 @@
                                                         </option>
                                                         <?php endforeach; ?>
                                                     </select>
+                                                    
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="base_course_name"><?php echo get_phrase('base_course_name'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input name="base_course_name" id="base_course_name" class="form-control" ></input>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row mb-3">
+                                                    <label class="col-md-3 col-form-label"
+                                                        for="course_duration"><?php echo get_phrase('course_duration'); ?></label>
+                                                    <div class="col-md-12">
+                                                        <input type="number" name="course_duration" id="course_duration" class="form-control" ></input>
+                                                    </div>
                                                 </div>
                                             </div> <!-- end col -->
                                             <!-- this portion will be generated theme wise from the theme-config.json file Starts-->
@@ -414,6 +462,7 @@ function filterCourses() {
     } else {
         errorText.style.display = 'none';
     }
+}
 </script>
 
 <style media="screen">
