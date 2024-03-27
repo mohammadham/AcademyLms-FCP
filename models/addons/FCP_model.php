@@ -269,7 +269,9 @@ class FCP_model extends CI_Model
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
-        $data['edition'] = $this->input->post('edition');
+        $data['bade_url'] = $this->input->post('bade_url');
+        $data['base_course_name'] = $this->input->post('base_course_name');
+        $data['enrol_url'] = $this->input->post('enrol_url');
         if($flag != 1){
             $flag = 0;
 
@@ -331,7 +333,11 @@ class FCP_model extends CI_Model
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
         $data['publication_name'] = $this->input->post('publication_name');
-        $data['edition'] = $this->input->post('edition');
+        $data['bade_url'] = $this->input->post('bade_url');
+        $data['base_course_name'] = $this->input->post('base_course_name');
+        $data['enrol_url'] = $this->input->post('enrol_url');
+        
+
         if($flag != 1){
             $flag = 0;
 

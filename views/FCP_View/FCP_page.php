@@ -34,7 +34,7 @@ use function PHPUnit\Framework\isEmpty;
             <?php if(count($FCPs) == 0): ?>
                     <div class="not-found w-100 text-center d-flex align-items-center flex-column">
                         <img loading="lazy" width="80px" src="<?php echo base_url('assets/global/image/not-found.svg'); ?>">
-                        <h5><?php echo get_phrase('Course Not Found'); ?></h5>
+                        <h5><?php echo get_phrase('Coupon Not Found'); ?></h5>
                         <p><?php echo get_phrase('Sorry, try using more similar words in your search.') ?></p>
                     </div>
             <?php endif; ?>   

@@ -86,7 +86,7 @@ class FCP extends CI_Controller
         $page_data['selected_price']     = $selected_price;
         $page_data['selected_rating']     = $selected_rating;
         $page_data['total_active_FCPs'] = $this->FCP_model->get_active_FCP()->num_rows();
-        $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
+        $this->load->view('FCP_view/index', $page_data);
     }
 
     public function FCP_details($slug ="", $FCP_id = "")
@@ -94,7 +94,7 @@ class FCP extends CI_Controller
         $page_data['page_name'] = "FCP_details";
         $page_data['page_title'] = get_phrase('FCP details');
         $page_data['FCP_id'] = $FCP_id;
-        $this->load->view('frontend/' . get_frontend_settings('theme') . '/index', $page_data);
+        $this->load->view('FCP_view/index', $page_data);
     }
 
     public function my_FCPs(){
@@ -105,7 +105,7 @@ class FCP extends CI_Controller
         $page_data['page_name'] = "my_FCPs";
         $page_data['page_title'] = site_phrase('my_FCPs');
         $page_data['my_FCPs'] = $this->FCP_model->my_FCPs();
-        $this->load->view('frontend/'.get_frontend_settings('theme').'/index', $page_data);
+        $this->load->view('FCP_view/index', $page_data);
     
     }
 
@@ -407,7 +407,7 @@ class FCP extends CI_Controller
             }
             redirect('home/my_FCPs', 'refresh');
         }
-        $this->load->view('frontend/'.get_frontend_settings('theme').'/FCP_rating', $page_data);
+        $this->load->view('FCP_view/View/FCP_rating', $page_data);
     }
     /*
     function student_purchase_history(){
@@ -423,7 +423,7 @@ class FCP extends CI_Controller
         $this->db->where('payment_id', $payment_id);
         $page_data['payment'] = $this->db->get('FCP_payment')->row_array();
         $page_data['FCP'] = $this->FCP_model->get_FCP_by_id($page_data['payment']['FCP_id'])->row_array();
-        $this->load->view('frontend/'.get_frontend_settings('theme').'/index', $page_data);
+        $this->load->view('FCP_view/index', $page_data);
     }
 
     

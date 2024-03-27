@@ -120,7 +120,6 @@ $FCP = array(
 		'type' => 'DOUBLE',
 		'collation' => 'utf8_unicode_ci'
 	),
-	,
 	'course_duration' => array(
 		'type' => 'INT',
 		'constraint' => '11',
