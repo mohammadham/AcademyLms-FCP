@@ -72,22 +72,15 @@ $FCP = array(
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	),
-	'publication_name' => array(
-		'type' => 'VARCHAR',
-		'constraint' => '255',
+	'Publisher_id' => array(
+		'type' => 'INT',
+		'constraint' => '11',
 		'default' => null,
 		'null' => TRUE,
 		'collation' => 'utf8_unicode_ci'
 	)
 	,
 	'base_course_name' => array(
-		'type' => 'VARCHAR',
-		'constraint' => '255',
-		'default' => null,
-		'null' => TRUE,
-		'collation' => 'utf8_unicode_ci'
-	),
-	'base_url' => array(
 		'type' => 'VARCHAR',
 		'constraint' => '255',
 		'default' => null,
@@ -260,6 +253,58 @@ $CI->dbforge->add_key('review_id', TRUE);
 $attributes = array('collation' => "utf8_unicode_ci");
 $CI->dbforge->create_table('FCP_reviews', TRUE);
 
+
+
+
+// CREATING FCP_category TABLE
+$FCP_publisher = array(
+	'Publisher_id' => array(
+		'type' => 'INT',
+		'constraint' => 11,
+		'unsigned' => TRUE,
+		'auto_increment' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'name' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'slug' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'thumbnail' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'base_url' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	),
+	'added_date' => array(
+		'type' => 'VARCHAR',
+		'constraint' => '255',
+		'default' => null,
+		'null' => TRUE,
+		'collation' => 'utf8_unicode_ci'
+	)
+);
+$CI->dbforge->add_field($FCP_publisher);
+$CI->dbforge->add_key('publisher_id', TRUE);
+$attributes = array('collation' => "utf8_unicode_ci");
+$CI->dbforge->create_table('FCP_publisher', TRUE);
 
 
 

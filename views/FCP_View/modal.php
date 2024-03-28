@@ -1,4 +1,7 @@
 <script type="text/javascript">
+    function redirectTo(url, event){
+    $(location).attr('href', url);
+  }
 function showAjaxModal(url, title, modalType)
 {
     $('#modal_ajax .modal-dialog').removeClass('modal-sm');

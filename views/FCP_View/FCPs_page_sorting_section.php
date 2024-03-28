@@ -1,8 +1,8 @@
 <div id="btnContainer ">
     <div class="list-card-control d-flex align-items-center">
         
-        <button class="btn list-btn <?php if($layout == 'list') echo 'active'; ?>" title="<?php echo get_phrase('List view') ?>" data-bs-toggle="tooltip" onclick="actionTo('<?php echo site_url('home/set_layout_to_session?layout=list'); ?>', 'post')"><i class="fa-solid fa-bars "></i></button>
-        <button class="btn list-btn <?php if($layout == 'grid') echo 'active'; ?>" title="<?php echo get_phrase('Grid view') ?>" data-bs-toggle="tooltip" onclick="actionTo('<?php echo site_url('home/set_layout_to_session?layout=grid'); ?>', 'post')"><i class="fa-solid fa-th"></i></button>
+        <button class="btn list-btn <?php if($layout == 'list') echo 'active'; ?>" title="<?php echo get_phrase('List view') ?>" data-bs-toggle="tooltip" onclick="toggleLayout('list')"><i class="fa-solid fa-bars "></i></button>
+        <button class="btn list-btn <?php if($layout == 'grid') echo 'active'; ?>" title="<?php echo get_phrase('Grid view') ?>" data-bs-toggle="tooltip" onclick="toggleLayout('grid')"><i class="fa-solid fa-th"></i></button>
         <a href="<?php echo site_url('addons/FCP/FCPs'); ?>" class="btn list-btn" title="<?php echo get_phrase('Reset') ?>" data-bs-toggle="tooltip"><i class="fas fa-sync-alt"></i></a>
        
         <p class="text-14px " style="margin-left:10px;margin-right:10px;"><?php echo site_phrase('showing').' '.count($FCPs).' '.site_phrase('of').' '.$total_result.' '.site_phrase('results'); ?></p>
@@ -17,3 +17,18 @@
       </div>
     </div>
 </div>
+<script>
+
+function toggleLayout(layout) {
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo site_url('addons/FCP/set_layout_to_session'); ?>',
+            data: {
+                layout: layout
+            },
+            success: function(response) {
+                location.reload();
+            }
+        });
+    }
+</script>

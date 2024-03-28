@@ -57,13 +57,13 @@
                                                                 <?php echo get_phrase('Reviews') ?>)</p>
                                                             </div>
                                                             <div class="review-btn  align-items-center grid grid-cols-1">
-                                                                <span class="compare-img checkPropagation" onclick="redirectTo('<?php echo base_url(isEmpty($latest_course['enrol_url'])?''.$latest_course['base_url'].'/'.slugify($latest_course['base_course_name']).'/?couponCode='.$latest_course['FCP_id']:$latest_course['enrol_url']); ?>');">
+                                                                <span class="compare-img checkPropagation" >
                                                                         <img loading="lazy" style="color: white" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
                                                                         <?php echo get_phrase('Enrol'); ?>
                                                                     </span>
                                                                 
                                                                 
-                                                                <span class="compare-img checkPropagation " style="background-color: #ffc107;color:black; hover:background-color:#ffc;"  onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/coupon_FCP_show/'.$latest_course['coupon']); ?>', '<?php echo get_phrase('Coupon_Code'); ?>');">
+                                                                <span class="compare-img checkPropagation " style="background-color: #ffc107;color:black; hover:background-color:#ffc;"  >
                                                                         <img loading="lazy" style="color: white" src="<?php echo base_url('assets/frontend/default-new/image/Group 17906.png') ?>">
                                                                         <?php echo get_phrase('coupon_code'); ?>
                                                                     </span>

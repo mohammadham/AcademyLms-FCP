@@ -9,41 +9,50 @@ To activate this addon in your Academy LMS, follow these steps:
 - **Path:** `application/config/routes.php`
 		
 		```php
-		// FCP
+		//FCP
 		$route['FCP/FCP_details/(:any)/(:any)'] = "addons/FCP/FCP_details/$1/$2";
 		$route['FCP'] = "addons/FCP/FCPs";
+		$route['FCP/(:any)/(:any)'] = "addons/FCP/FCPs/$1/$2";
+		$route['FCP/(:any)'] = "addons/FCP/FCPs/$1";
 		$route['FCP_manager/all_FCPs'] = "addons/FCP_manager/all_FCPs";
 		$route['FCP_manager/add_FCP'] = "addons/FCP_manager/add_FCP";
 		$route['FCP_manager/payment_history'] = "addons/FCP_manager/payment_history";
 		$route['FCP_manager/category'] = "addons/FCP_manager/category";
+		$route['FCP_manager/Publisher'] = "addons/FCP_manager/Publisher";
 		$route['FCP/buy/(:any)'] = "addons/FCP/buy/$1";
 		$route['home/my_FCPs'] = "addons/FCP/my_FCPs";
 		//end FCP
 ### Update navigation.php
 - **Path:** 'application/views/backend/admin/navigation.php'
 - **Line:** 82
-	<!-- FCP Addon -->
-		  <?php if (addon_status('FCP')) : ?>
-					<li class="side-nav-item">
-						<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'all_FCPs' || $page_name == 'add_FCP' || $page_name == 'FCP_edit') : ?> active <?php endif; ?>">
-							<i class="dripicons-ticket"></i>
-							<span> <?php echo get_phrase('Coupons'); ?> </span>
-							<span class="menu-arrow"></span>
-						</a>
-						<ul class="side-nav-second-level <?php if ($page_name == 'FCP_edit') echo 'in'; ?>" aria-expanded="false">
-							<li class="<?php if ($page_name == 'all_FCPs' || $page_name == 'FCP_edit') echo 'active'; ?>">
-								<a href="<?php echo site_url('addons/FCP_manager/FCP'); ?>"><?php echo get_phrase('all_FCPs'); ?></a>
-							</li>
-							<li class="<?php if ($page_name == 'add_FCP') echo 'active'; ?>">
-								<a href="<?php echo site_url('FCP_manager/add_FCP'); ?>"><?php echo get_phrase('add_FCP'); ?></a>
-							</li>
-							<li class="<?php if ($page_name == 'FCP_category') echo 'active'; ?>">
-								<a href="<?php echo site_url('addons/FCP_manager/FCP_category'); ?>"><?php echo get_phrase('category'); ?></a>
-							</li>
-						</ul>
-					</li>
-		  <?php endif; ?>
-	<!-- FCP Addon -->
+
+		  <!-- FCP Addon -->
+			  <?php if (addon_status('FCP')) : ?>
+  				<li class="side-nav-item">
+  					<a href="javascript: void(0);" class="side-nav-link <?php if ($page_name == 'all_FCPs' || $page_name == 'add_FCP' || $page_name == 'FCP_edit') : ?> active <?php endif; ?>">
+  						<i class="dripicons-ticket"></i>
+  						<span> <?php echo get_phrase('Coupons'); ?> </span>
+  						<span class="menu-arrow"></span>
+  					</a>
+  					<ul class="side-nav-second-level <?php if ($page_name == 'FCP_edit') echo 'in'; ?>" aria-expanded="false">
+  						<li class="<?php if ($page_name == 'all_FCPs' || $page_name == 'FCP_edit') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP'); ?>"><?php echo get_phrase('all_FCPs'); ?></a>
+  						</li>
+  						<li class="<?php if ($page_name == 'add_FCP') echo 'active'; ?>">
+  							<a href="<?php echo site_url('FCP_manager/add_FCP'); ?>"><?php echo get_phrase('add_FCP'); ?></a>
+  						</li>
+
+  						<li class="<?php if ($page_name == 'FCP_category') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP_category'); ?>"><?php echo get_phrase('category'); ?></a>
+  						</li>
+						<li class="<?php if ($page_name == 'FCP_Publisher') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP_Publisher'); ?>"><?php echo get_phrase('Publisher'); ?></a>
+  						</li>
+  					</ul>
+  				</li>
+			  <?php endif; ?>
+		<!-- FCP Addon -->
+
 ### Update header_lg_device.php
 - **Attention:** if you use lite version or old version use this part
 - **Path:** 'application/views/frontend/default-new/header_lg_device.php'

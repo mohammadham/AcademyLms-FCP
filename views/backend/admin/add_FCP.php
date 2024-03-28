@@ -98,6 +98,20 @@
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="Publisher_id"><?php echo get_phrase('Publisher'); ?></label>
+                                                    <select class="form-control select2" data-toggle="select2"
+                                                        name="Publisher_id" id="Publisher_id" required>
+                                                        <option value="">
+                                                            <?php echo get_phrase('select_a_Publisher'); ?>
+                                                        </option>
+                                                        <?php foreach($this->FCP_model->get_FCP_Publishers()->result_array() as $Publisher): ?>
+                                                        <option value="<?php echo $Publisher['category_id']; ?>">
+                                                            <?php echo $Publisher['name']; ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
 
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label"
@@ -113,15 +127,6 @@
                                                     <div class="col-md-12">
                                                         <textarea name="short_description" id="short_description"
                                                             class="form-control"></textarea>
-                                                    </div>
-                                                </div>
-
-                                                <div class="form-group row mb-3">
-                                                    <label class="col-md-3 col-form-label"
-                                                        for="description"><?php echo get_phrase('publication_name'); ?></label>
-                                                    <div class="col-md-12">
-                                                        <input name="publication_name" id="publication_name"
-                                                            class="form-control"></input>
                                                     </div>
                                                 </div>
                                                 

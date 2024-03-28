@@ -2,8 +2,8 @@
 $FCP_details = $this->FCP_model->get_FCP_by_id($FCP_id)->row_array();
 $instructor_details = $this->user_model->get_all_user($FCP_details['user_id'])->row_array();
 $category_details = $this->FCP_model->get_categories($FCP_details['category_id'])->row_array();
-var_dump($category_details);
-
+$publisher_details = $this->FCP_model->get_Publisher_details_by_id($FCP_details['Publisher_id'])->row_array();
+$course_details = $this->crud_model->get_course_by_id($FCP_details['course_id'])->row_array();
 
 $user_id = $this->session->userdata('user_id');
                               
@@ -22,6 +22,9 @@ $user_id = $this->session->userdata('user_id');
         border: 0.5px solid #dddddd;
     }
 </style>
+<!---------- Bread Crumb Area Start ---------->
+<?php include "breadcrumb.php"; ?>
+<!---------- Bread Crumb Area End ---------->
 
 <!-- Start FCP Details -->
 <section class="pt-100 pb-80">
@@ -34,14 +37,25 @@ $user_id = $this->session->userdata('user_id');
             <div class="FCP-content">
                 <h4 class="s_Sidebar_title_one s_bar mb-20"><?php echo $FCP_details['title']; ?></h4>
                 <!-- <p class="info"><?php echo htmlspecialchars_decode(substr_replace($FCP_details['description'], "...", 300)); ?></p> -->
-                <p class="info"><i><?php echo get_phrase('created_by') ?></i>
+                <p class="info"><i><?php echo get_phrase('Share_by') ?></i>
                     <a class="text-14px fw-600 text-decoration-none"
                         href="<?php echo site_url('home/instructor_page/' . $FCP_details['user_id']); ?>"><?php echo $instructor_details['first_name'] . ' ' . $instructor_details['last_name']; ?></a>
 
                 </p>
-                <p class="info"><?php echo get_phrase('publication_name') ?>
-                    <span><?php echo $FCP_details['publication_name'] ?></span>
-                </p>
+                <?php 
+                    if($publisher_details != null):
+                        ?>
+                        <p class="info"><?php echo get_phrase('publication_name') ?>
+                            <span>
+                            <?php echo $publisher_details['name'];?>
+                            </span>
+                        </p>
+                        
+
+                    <?php
+                    endif;
+                ?>
+                
                 <p class="info"><?php echo get_phrase('published_date') ?> : <span><?php echo  date('D, d-M-Y', $FCP_details['added_date']); ?></span>
                 </p>
                 <p class="info"><?php echo get_phrase('category_name') ?> : <span><?php echo $category_details['title'] ?></span></p>
@@ -71,7 +85,53 @@ $user_id = $this->session->userdata('user_id');
     </div>
 </section>
 <!-- End FCP Details -->
+<!-- start google ads section -->
+<?php if (isset($googleAds)): ?>
+    <section class="pb-80 pt-80">
 
+    </section>
+<?php endif; ?>
+<!-- END google ads section -->
+<!-- start Enrol section  -->
+<section class="pb-80 pt-60 h-50">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-4">
+                <div class="  h-40 sm:h-60 min-h-16 container  py-20  items-center">
+                    <div class="fcp-box">
+                        <a class="" onclick="redirectTo('<?php echo base_url(isset($latest_course['enrol_url'])?''.$publisher_details['base_url'].'/'.slugify($latest_course['base_course_name']).'/?couponCode='.$latest_course['FCP_id']:$latest_course['enrol_url']); ?>');">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                            <img loading="lazy" style="color: white" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
+                            <?php echo get_phrase('Enrol'); ?>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-8">
+            <div class="h-40 sm:h-60 min-h-16 container  py-20  items-center">  
+                <div class="fcp-box">                                  
+                            <a class=" " style="background-color: #ffc107;color:black; hover:background-color:#ffc;
+                              hover:box-shadow: 0 0 5px #ffc107,
+                                        0 0 25px #ffc107,
+                                        0 0 50px #ffc107,
+                                        0 0 100px #ffc107;"  onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/coupon_FCP_show/'.$latest_course['coupon']); ?>', '<?php echo get_phrase('Coupon_Code'); ?>');">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                                <img loading="lazy" style="color: white" src="<?php echo base_url('assets/frontend/default-new/image/Group 17906.png') ?>">
+                                <?php echo get_phrase('coupon_code'); ?>
+                         </a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END Enrol section  -->
 <!-- Start FCP Tabs -->
 <section class="pb-80">
     <div class="container">
@@ -106,14 +166,31 @@ $user_id = $this->session->userdata('user_id');
                             <?php echo $instructor_details['first_name']." ".$instructor_details['last_name'] ?>
                         </td>
                     </tr>
+                    <?php if($publisher_details != null):?>
                     <tr>
                         <th><?php echo get_phrase('Publisher');?></td>
-                        <td><?php echo $FCP_details['publication_name'] ?></td>
+                        <td><?php echo $publisher_details['name'] ?></td>
                     </tr>
                     <tr>
                         <th><?php echo get_phrase('bade_url');?></td>
-                        <td><?php echo $FCP_details['bade_url'] ?></td>
+                        <td><?php echo $publisher_details['bade_url'] ?></td>
                     </tr>
+                    <?php endif;?>
+                    <?php if($course_details != null):?>
+                    <tr>
+                        <th><?php echo get_phrase('language');?></td>
+                        <td><?php echo $course_details['language'] ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo get_phrase('level');?></td>
+                        <td><?php echo $course_details['level'] ?></td>
+                    </tr>
+                    <tr>
+                        <th><?php echo get_phrase('course_type');?></td>
+                        <td><?php echo $course_details['course_type'] ?></td>
+                    </tr>
+                    <?php endif;?>
+                    
                     
                 </table>
             </div>
@@ -133,7 +210,7 @@ $user_id = $this->session->userdata('user_id');
                             <option value="4"><?php echo get_phrase('4 Start Rating') ?></option>
                             <option value="5"><?php echo get_phrase('5 Start Rating') ?></option>
                         </select>
-                        <textarea class="form-control text-section" name="comment" placeholder="<?php echo get_phrase('Write your comment') ?>" ></textarea>
+                        
                         <div class="msg mt-3">
                             <button type="submit" class="btn btn-primary"><?php echo get_phrase('Submit'); ?></button>
                         </div>
@@ -180,68 +257,7 @@ $user_id = $this->session->userdata('user_id');
 </section>
 <!-- End Related FCP -->
 
-<!-- Start Instructor -->
-<section class="pb-120">
-    <div class="container">
-    <h4 class="s_title_one pb-50"><?php echo get_phrase('About Instructor')?></h4>
-    <div class="row justify-content-between">
-        <div class="col-lg-9">
-        <div class="s_FCP_instructor">
-            <div class="img"><img src="<?php echo $this->user_model->get_user_image_url($FCP_details['user_id']) ?>" alt="" /></div>
-            <div class="content">
-            <h5 class="name"><?php echo $instructor_details['first_name']." ".$instructor_details['last_name'] ?></h5>
-            <!-- <p class="subtitle">Agile Project Expert</p> -->
-            <p class="info"><?php echo $instructor_details['biography'] ?></p>
-            <ul class="instructor_social">
-                <?php $social_link = json_decode($instructor_details['social_links']);?>
-                <li>
-                <a href="<?php echo $social_link->facFCP;?>"><i class="fa-brands fa-facFCP-f"></i></a>
-                </li>
-                <li>
-                <a href="<?php echo $social_link->twitter;?>"><i class="fa-brands fa-twitter"></i></a>
-                </li>
-                <li>
-                <a href="<?php echo $social_link->linkedin?>"><i class="fa-brands fa-linkedin"></i></a>
-                </li>
-                <li>
-                <!-- <a href="#"><i class="fa-brands fa-behance"></i></a> -->
-                </li>
-            </ul>
-            </div>
-        </div>
-        </div>
-        <div class="col-lg-2">
-            <?php 
-                $number_of_ratings = $this->FCP_model->get_ratings($other_related_FCP['FCP_id'])->num_rows();
-                $total_rating =  $this->FCP_model->get_ratings($other_related_FCP['FCP_id'], true)->row()->rating;
-            ?>
-            <div class="s_review text-lg-end">
-                <h4 class="title"><?php echo get_phrase('FCP review')?></h4>
-                <p class="date"></p>
-                <p class="rating-no"><?php 
-                    if ($number_of_ratings > 0) {
-                        $average_ceil_rating = ceil($total_rating / $number_of_ratings);
-                        echo $average_ceil_rating;
-                    } else {
-                        $average_ceil_rating = 0;
-                        echo $average_ceil_rating;
-                    }
-                ?></p>
-                <div class="rating-icon justify-content-lg-end">
-                    <?php for ($i = 1; $i < 6; $i++) : ?>
-                        <?php if ($i <= $average_ceil_rating) : ?>
-                            <img src="<?php echo base_url('assets/frontend/default-new/image/icon/star-solid.svg')?>" alt="" />
-                        <?php else : ?>
-                            <img src="<?php echo base_url('assets/frontend/default-new/image/icon/star-solid-2.svg')?>" alt="" />
-                        <?php endif; ?>
-                    <?php endfor; ?>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</section>
-<!-- End Instructor -->
+
 
 <script>
     function handleCartItems(elem) {

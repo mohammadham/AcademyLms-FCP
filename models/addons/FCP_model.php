@@ -5,13 +5,108 @@ use Razorpay\Api\Api;
 use Razorpay\Api\Errors\SignatureVerificationError;
 class FCP_model extends CI_Model
 {
+        //publisher manager
+        public function get_Publisher_id($slug = "")
+        {
+            $category_details = $this->db->get_where("FCP_Publisher", array("slug" => $slug))->row_array();
+            return $category_details['Publisher_id'];
+        }
+        public function get_Publishers($param1 = "")
+        {
+            if($param1 != ""){
+                $this->db->where('Publisher_id',$param1);
+            }
+            return $this->db->get('FCP_Publisher');
+        }
+        function get_FCP_Publishers($FCP_Publisher_id = ""){
+            if($FCP_Publisher_id > 0){
+                $this->db->where('Publisher_id', $FCP_Publisher_id);
+            }
+            return $this->db->get('FCP_Publisher');
+        }
+        public function get_active_addon_by_Publisher_id($Publisher_id = "", $Publisher_id_type = "Publisher_id"){
+            $this->db->where($Publisher_id_type, $Publisher_id);
+            $this->db->where('is_active', 1);
+            return $this->db->get('FCP');
+        }
+        public function get_Publisher_details_by_id($id)
+        {
+            return $this->db->get_where('FCP_Publisher', array('Publisher_id' => $id));
+        }
+        public function add_FCP_Publisher()
+        {
+            $data['name'] = htmlspecialchars($this->input->post('name'));
+            $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+            $data['slug'] = slugify($data['title']);
+            // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
+            $data['added_date'] = time();
+            if (!file_exists('uploads/FCP/thumbnails/Publisher_thumbnails')) {
+                mkdir('uploads/FCP/thumbnails/Publisher_thumbnails', 0777, true);
+            }
+            elseif ($_FILES['Publisher_thumbnail']['name'] == "") {
+                $data['thumbnail'] = 'Publisher-thumbnail.png';
+            } 
+            else {
+                $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
+                move_uploaded_file($_FILES['Publisher_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/Publisher_thumbnails/' . $data['thumbnail']);
+            }
+            
+            $this->db->where('slug', $data['slug']);
+            $row = $this->db->get('FCP_Publisher');
+            
+            if($row->num_rows() > 0)
+            {
+                return false;
+            }else{
+                $this->db->insert('FCP_Publisher', $data);
+                
+                return true;
+            }
+    
+        }
+        function delete_FCP_Publisher($Publisher_id = ""){
+            $this->db->where('Publisher_id', $Publisher_id);
+            $this->db->delete('FCP_Publisher');
+        }
+        function update_FCP_Publisher($Publisher_id = ""){
+            $data['name'] = htmlspecialchars($this->input->post('name'));
+            $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+            $data['slug'] = slugify($data['title']);
+            // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
+            $data['added_date'] = time();
+            if (!file_exists('uploads/FCP/thumbnails/Publisher_thumbnails')) {
+                mkdir('uploads/FCP/thumbnails/Publisher_thumbnails', 0777, true);
+            }
+            elseif ($_FILES['Publisher_thumbnail']['name'] == "") {
+                $data['thumbnail'] = 'Publisher-thumbnail.png';
+            } 
+            else {
+                $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
+                move_uploaded_file($_FILES['Publisher_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/Publisher_thumbnails/' . $data['thumbnail']);
+            }
+            
+            $this->db->where('slug', $data['slug']);
+            $row = $this->db->get('FCP_Publisher');
+            if($row->num_rows() > 0 && $row->row('Publisher_id') != $Publisher_id){
+                return false;
+            }else{
+                $this->db->where('Publisher_id', $Publisher_id);
+                $this->db->update('FCP_Publisher', $data);
+                return true;
+            }
+        }
+        public function get_FCPs_by_Publisher_id($Publisher_id = ""){
+            $this->db->where('Publisher_id', $Publisher_id);
+            $this->db->where('is_active', 1);
+            return $this->db->get('FCP');
+        }
 
-
-    public function get_category_id($slug = "")
-    {
-        $category_details = $this->db->get_where("FCP_category", array("slug" => $slug))->row_array();
-        return $category_details['category_id'];
-    }
+        //category manager
+        public function get_category_id($slug = "")
+        {
+            $category_details = $this->db->get_where("FCP_category", array("slug" => $slug))->row_array();
+            return $category_details['category_id'];
+        }
     public function get_categories($param1 = "")
     {
         if($param1 != ""){
@@ -19,10 +114,11 @@ class FCP_model extends CI_Model
         }
         return $this->db->get('FCP_category');
     }
-
-    public function get_active_FCP(){
-        $this->db->where('is_active', 1);
-        return $this->db->get('FCP');
+    function get_FCP_categories($FCP_category_id = ""){
+        if($FCP_category_id > 0){
+            $this->db->where('category_id', $FCP_category_id);
+        }
+        return $this->db->get('FCP_category');
     }
     public function get_active_addon_by_category_id($category_id = "", $category_id_type = "category_id"){
         $this->db->where($category_id_type, $category_id);
@@ -32,6 +128,75 @@ class FCP_model extends CI_Model
     public function get_category_details_by_id($id)
     {
         return $this->db->get_where('FCP_category', array('category_id' => $id));
+    }
+    public function add_FCP_category()
+    {
+        $data['title'] = htmlspecialchars($this->input->post('title'));
+        $data['slug'] = slugify($data['title']);
+        // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
+        $data['added_date'] = time();
+        if (!file_exists('uploads/FCP/thumbnails/category_thumbnails')) {
+            mkdir('uploads/FCP/thumbnails/category_thumbnails', 0777, true);
+        }
+        elseif ($_FILES['category_thumbnail']['name'] == "") {
+            $data['thumbnail'] = 'category-thumbnail.png';
+        } 
+        else {
+            $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
+            move_uploaded_file($_FILES['category_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/category_thumbnails/' . $data['thumbnail']);
+        }
+        
+        $this->db->where('slug', $data['slug']);
+        $row = $this->db->get('FCP_category');
+
+        if($row->num_rows() > 0)
+        {
+            return false;
+        }else{
+            $this->db->insert('FCP_category', $data);
+            return true;
+        }
+
+    }
+    function delete_FCP_category($category_id = ""){
+        $this->db->where('category_id', $category_id);
+        $this->db->delete('FCP_category');
+    }
+    function update_FCP_category($category_id = ""){
+        $data['title'] = htmlspecialchars($this->input->post('title'));
+        $data['slug'] = slugify($data['title']);
+        // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
+        $data['added_date'] = time();
+        if (!file_exists('uploads/FCP/thumbnails/category_thumbnails')) {
+            mkdir('uploads/FCP/thumbnails/category_thumbnails', 0777, true);
+        }
+        elseif ($_FILES['category_thumbnail']['name'] == "") {
+            $data['thumbnail'] = 'category-thumbnail.png';
+        } 
+        else {
+            $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
+            move_uploaded_file($_FILES['category_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/category_thumbnails/' . $data['thumbnail']);
+        }
+        
+        $this->db->where('slug', $data['slug']);
+        $row = $this->db->get('FCP_category');
+        if($row->num_rows() > 0 && $row->row('category_id') != $category_id){
+            return false;
+        }else{
+            $this->db->where('category_id', $category_id);
+            $this->db->update('FCP_category', $data);
+            return true;
+        }
+    }
+    public function get_FCPs_by_category_id($category_id = ""){
+        $this->db->where('category_id', $category_id);
+        $this->db->where('is_active', 1);
+        return $this->db->get('FCP');
+    }
+    //fcp management
+    public function get_active_FCP(){
+        $this->db->where('is_active', 1);
+        return $this->db->get('FCP');
     }
     function filter_FCP($selected_category_id = "", $selected_price = "", $selected_rating = "", $search_text ="")
     {
@@ -203,12 +368,6 @@ class FCP_model extends CI_Model
         $this->db->order_by('FCP_id', 'desc');
         return $this->db->get('FCP')->result_array();
     }
-    function get_FCP_categories($FCP_category_id = ""){
-        if($FCP_category_id > 0){
-            $this->db->where('category_id', $FCP_category_id);
-        }
-        return $this->db->get('FCP_category');
-    }
 
     public function get_FCPs_list($FCP_id = " ")
     {
@@ -220,16 +379,19 @@ class FCP_model extends CI_Model
         $this->db->order_by('FCP_id', 'desc');
         return $this->db->get('FCP');
     }
-    public function get_FCPs_by_category_id($category_id = ""){
-        $this->db->where('category_id', $category_id);
-        $this->db->where('is_active', 1);
-        return $this->db->get('FCP');
+
+    public function get_layout_from_session()
+    {
+        
+        return $this->session->userdata('layout');
+
+       
     }
 
     public function add_FCP(){
         $data['title'] = htmlspecialchars($this->input->post('title'));
         
-        $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+        // $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
         $data['enrol_Url'] = htmlspecialchars($this->input->post('enrol_Url'));
         $data['base_course_name'] = htmlspecialchars($this->input->post('base_course_name'));
         $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
@@ -273,7 +435,7 @@ class FCP_model extends CI_Model
         $data['course_price'] = $this->input->post('course_price');
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
-        $data['publication_name'] = $this->input->post('publication_name');
+        $data['Publisher_id'] = $this->input->post('publisher_id');
         // $data['bade_url'] = $this->input->post('bade_url');
         // $data['base_course_name'] = $this->input->post('base_course_name');
         // $data['enrol_url'] = $this->input->post('enrol_url');
@@ -303,7 +465,7 @@ class FCP_model extends CI_Model
     public function update_FCP($FCP_id = ""){
         $data['title'] = htmlspecialchars($this->input->post('title'));
         
-        $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
+        // $data['base_url'] = htmlspecialchars($this->input->post('base_url'));
         $data['enrol_Url'] = htmlspecialchars($this->input->post('enrol_Url'));
         $data['base_course_name'] = htmlspecialchars($this->input->post('base_course_name'));
         $data['coupon'] = htmlspecialchars($this->input->post('coupon'));
@@ -342,7 +504,7 @@ class FCP_model extends CI_Model
         $data['course_price'] = $this->input->post('course_price');
         $flag = $this->input->post('discount_flag');
         $free = $this->input->post('is_free');
-        $data['publication_name'] = $this->input->post('publication_name');
+        $data['Publisher_id'] = $this->input->post('publisher_id');
         // $data['bade_url'] = $this->input->post('bade_url');
         // $data['base_course_name'] = $this->input->post('base_course_name');
         // $data['enrol_url'] = $this->input->post('enrol_url');
@@ -398,66 +560,7 @@ class FCP_model extends CI_Model
 
     }
 
-    public function add_FCP_category()
-    {
-        $data['title'] = htmlspecialchars($this->input->post('title'));
-        $data['slug'] = slugify($data['title']);
-        // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
-        $data['added_date'] = time();
-        if (!file_exists('uploads/FCP/thumbnails/category_thumbnails')) {
-            mkdir('uploads/FCP/thumbnails/category_thumbnails', 0777, true);
-        }
-        elseif ($_FILES['category_thumbnail']['name'] == "") {
-            $data['thumbnail'] = 'category-thumbnail.png';
-        } 
-        else {
-            $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
-            move_uploaded_file($_FILES['category_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/category_thumbnails/' . $data['thumbnail']);
-        }
-        
-        $this->db->where('slug', $data['slug']);
-        $row = $this->db->get('FCP_category');
-
-        if($row->num_rows() > 0)
-        {
-            return false;
-        }else{
-            $this->db->insert('FCP_category', $data);
-            return true;
-        }
-
-    }
-    function delete_FCP_category($category_id = ""){
-        $this->db->where('category_id', $category_id);
-        $this->db->delete('FCP_category');
-    }
-    function update_FCP_category($category_id = ""){
-        $data['title'] = htmlspecialchars($this->input->post('title'));
-        $data['slug'] = slugify($data['title']);
-        // $data['thumbnail'] = htmlspecialchars($this->input->post('thumbnail'));
-        $data['added_date'] = time();
-        if (!file_exists('uploads/FCP/thumbnails/category_thumbnails')) {
-            mkdir('uploads/FCP/thumbnails/category_thumbnails', 0777, true);
-        }
-        elseif ($_FILES['category_thumbnail']['name'] == "") {
-            $data['thumbnail'] = 'category-thumbnail.png';
-        } 
-        else {
-            $data['thumbnail'] = md5(rand(10000000, 20000000)) . '.jpg';
-            move_uploaded_file($_FILES['category_thumbnail']['tmp_name'], 'uploads/FCP/thumbnails/category_thumbnails/' . $data['thumbnail']);
-        }
-        
-        $this->db->where('slug', $data['slug']);
-        $row = $this->db->get('FCP_category');
-        if($row->num_rows() > 0 && $row->row('category_id') != $category_id){
-            return false;
-        }else{
-            $this->db->where('category_id', $category_id);
-            $this->db->update('FCP_category', $data);
-            return true;
-        }
-    }
-
+   
     public function get_instructor_wise_FCPs($instructor_id = "", $return_as = "")
     {
         
