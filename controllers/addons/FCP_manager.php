@@ -80,15 +80,59 @@ class FCP_manager extends CI_Controller
     public function add_FCP_category(){
         $this->load->view("backend/admin/FCP_category_add");
     }
-    public function coupon_FCP_show($coupon = ""){
-        $data['Coupon']=$coupon;
-        $this->load->view("FCP_view/FCP_Coupon",$data);
-    }
+    
+    
     public function edit_FCP_category($category_id = ""){
         $data['FCP_category'] = $this->FCP_model->get_FCP_categories($category_id)->row_array();
         $this->load->view('backend/admin/FCP_category_edit', $data);
     }
-    
+    //coupon management
+    public function coupon_FCP_show($coupon = ""){
+        $data['Coupon']=$coupon;
+        $this->load->view("FCP_view/FCP_Coupon",$data);
+    }
+
+    //Publisher
+    public function add_FCP_Publisher(){
+        $this->load->view("backend/admin/FCP_Publisher_add");
+    }
+    public function edit_FCP_Publisher($Publisher_id = ""){
+        $data['FCP_Publisher'] = $this->FCP_model->get_FCP_Publishers($Publisher_id)->row_array();
+        $this->load->view('backend/admin/FCP_Publisher_edit', $data);
+    }
+    public function FCP_Publisher($param1 = "", $param2 = "")
+    {
+        if($param1 == "add"){
+            $status = $this->FCP_model->add_FCP_Publisher();
+            if($status){
+                $this->session->set_flashdata('flash_message', get_phrase('FCP_Publisher_added_successfully'));
+            }else{
+                $this->session->set_flashdata('error_message', get_phrase('there_is_already_a_FCP_Publisher_with_this_name'));
+            }
+        redirect(site_url('addons/FCP_manager/FCP_Publisher'), 'refresh');
+
+        }
+        if($param1 == "delete"){
+            $response = $this->FCP_model->delete_FCP_Publisher($param2);
+            $this->session->set_flashdata('flash_message', get_phrase('FCP_Publisher_deleted_successfully'));
+            redirect(site_url('addons/FCP_manager/FCP_Publisher'), 'refresh');
+        }
+        if($param1 == "update")
+        {
+            $response = $this->FCP_model->update_FCP_Publisher($param2);
+            if($response == true){
+                $this->session->set_flashdata('flash_message', get_phrase('FCP_Publisher_updated_successfully'));
+            }else{
+                $this->session->set_flashdata('error_message', get_phrase('there_is_already_a_FCP_with_this_name'));
+            }
+            redirect(site_url('addons/FCP_manager/FCP_Publisher'), 'refresh');
+        }
+
+        $page_data['Publishers'] = $this->FCP_model->get_FCP_Publishers();
+        $page_data['page_title'] = 'FCP Publisher';
+        $page_data['page_name'] = 'FCP_Publisher';
+        $this->load->view('backend/index', $page_data);
+    }
     //FCP management
     public function edit_FCP($FCP_id = " ")
     {

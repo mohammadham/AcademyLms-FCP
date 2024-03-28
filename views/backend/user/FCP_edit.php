@@ -104,6 +104,21 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                         <?php endforeach; ?>
                                                     </select>
                                                 </div>
+                                                <div class="form-group">
+                                                    <label
+                                                        for="Publisher_id"><?php echo get_phrase('Publisher'); ?></label>
+                                                    <select class="form-control select2" data-toggle="select2"
+                                                        name="Publisher_id" id="Publisher_id" required>
+                                                        <option value="">
+                                                            <?php echo get_phrase('select_a_Publisher'); ?>
+                                                        </option>
+                                                        <?php foreach($this->FCP_model->get_FCP_Publishers()->result_array() as $Publisher): ?>
+                                                        <option value="<?php echo $Publisher['Publisher_id']; ?>"
+                                                            <?php if($Publisher['Publisher_id'] == $FCP['Publisher_id']){ echo 'selected';} ?>>
+                                                            <?php echo $Publisher['name'] ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
 
                                                 <div class="form-group row mb-3">
                                                     <label class="col-md-3 col-form-label"
@@ -121,15 +136,7 @@ $FCP_thumbnail = $this->FCP_model->get_FCP_thumbnail_url($FCP['FCP_id']);
                                                             class="form-control"><?php echo $FCP['short_description']; ?></textarea>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
-                                                    <label
-                                                        for="publication_name"><?php echo get_phrase('publication_name'); ?></label>
-                                                    <input type="text" class="form-control" name="publication_name"
-                                                        id="publication_name"
-                                                        value="<?php echo $FCP['publication_name'] ?>"
-                                                        placeholder="<?php echo get_phrase('enter_publication_name'); ?>"
-                                                        required>
-                                                </div>
+                                                
                                                 
 
                                                 <div class="form-group mb-3">

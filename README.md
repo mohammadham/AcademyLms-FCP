@@ -9,13 +9,16 @@ To activate this addon in your Academy LMS, follow these steps:
 - **Path:** `application/config/routes.php`
 		
 		```php
-		// FCP
+		//FCP
 		$route['FCP/FCP_details/(:any)/(:any)'] = "addons/FCP/FCP_details/$1/$2";
 		$route['FCP'] = "addons/FCP/FCPs";
+		$route['FCP/(:any)/(:any)'] = "addons/FCP/FCPs/$1/$2";
+		$route['FCP/(:any)'] = "addons/FCP/FCPs/$1";
 		$route['FCP_manager/all_FCPs'] = "addons/FCP_manager/all_FCPs";
 		$route['FCP_manager/add_FCP'] = "addons/FCP_manager/add_FCP";
 		$route['FCP_manager/payment_history'] = "addons/FCP_manager/payment_history";
 		$route['FCP_manager/category'] = "addons/FCP_manager/category";
+		$route['FCP_manager/Publisher'] = "addons/FCP_manager/Publisher";
 		$route['FCP/buy/(:any)'] = "addons/FCP/buy/$1";
 		$route['home/my_FCPs'] = "addons/FCP/my_FCPs";
 		//end FCP
@@ -40,6 +43,9 @@ To activate this addon in your Academy LMS, follow these steps:
 
   						<li class="<?php if ($page_name == 'FCP_category') echo 'active'; ?>">
   							<a href="<?php echo site_url('addons/FCP_manager/FCP_category'); ?>"><?php echo get_phrase('category'); ?></a>
+  						</li>
+						<li class="<?php if ($page_name == 'FCP_Publisher') echo 'active'; ?>">
+  							<a href="<?php echo site_url('addons/FCP_manager/FCP_Publisher'); ?>"><?php echo get_phrase('Publisher'); ?></a>
   						</li>
   					</ul>
   				</li>

@@ -89,6 +89,14 @@ class FCP extends CI_Controller
         $this->load->view('FCP_view/index', $page_data);
     }
 
+    public function set_layout_to_session()
+    {
+        $layout = $this->input->post('layout');
+        $this->session->set_userdata('layout', $layout);
+
+        echo json_encode(['reload' => true]);
+    }
+
     public function FCP_details($slug ="", $FCP_id = "")
     {
         $page_data['page_name'] = "FCP_details";

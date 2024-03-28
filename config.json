@@ -29,6 +29,9 @@
       "name": "uploads/FCP/thumbnails/category_thumbnails"
     },
     {
+      "name": "uploads/FCP/thumbnails/Publisher_thumbnails"
+    },
+    {
       "name": "application/views/FCP_View"
     }
 
