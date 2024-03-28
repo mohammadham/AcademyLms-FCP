@@ -4,7 +4,8 @@ use function PHPUnit\Framework\isEmpty;
 
 
 
-    $layout = isset($_GET['$layout']) ? $_GET['$layout'] : "list" ;
+    $layout = $this->FCP_model->get_layout_from_session();
+    $layout= $layout ? $layout :(isset($_GET['$layout']) ? $_GET['$layout'] : "list");
     $selected_category = isset($_GET['category']) ? $_GET['category'] : 'all';
     $selected_category_id = $this->FCP_model->get_category_id($selected_category);
     $selected_category_id = isset($selected_category_id) ? $selected_category_id:"all";
@@ -134,7 +135,7 @@ use function PHPUnit\Framework\isEmpty;
     function toggleLayout(layout) {
         $.ajax({
             type: 'POST',
-            url: '<?php echo site_url('home/set_layout_to_session'); ?>',
+            url: '<?php echo site_url('addons/FCP/set_layout_to_session'); ?>',
             data: {
                 layout: layout
             },

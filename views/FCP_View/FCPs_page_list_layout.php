@@ -30,7 +30,7 @@
                 }
             ?>
             <!-- Course List Card -->
-            <a href="<?php echo site_url('addons/FCP/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['FCP_id']); ?>" class="courses-list-view-card-body courses-card-body checkPropagation">
+            <a href="<?php echo site_url('addons/FCP/FCP_details/' . rawurlencode(slugify($latest_course['title'])) . '/' . $latest_course['FCP_id']); ?>" class="courses-list-view-card-body courses-card-body checkPropagation">
                 <div class="courses-card-image ">
                     <img loading="lazy" src="<?php echo $this->FCP_model->get_FCP_thumbnail_url($latest_course['FCP_id']); ?>">
                 </div>
@@ -38,14 +38,14 @@
                     <div class="courses-d-flex-text">
                         <h5><?php echo $latest_course['title']; ?></h5>
                         <div>
-                            <span class="compare-img checkPropagation" onclick="redirectTo('<?php echo base_url(isEmpty($latest_course['enrol_url'])?''.$latest_course['base_url'].'/'.slugify($latest_course['base_course_name']).'/?couponCode='.$latest_course['FCP_id']:$latest_course['enrol_url']); ?>');">
+                            <span class="compare-img checkPropagation" >
                                 <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
                                 <?php echo get_phrase('Enrol'); ?>
                             </span>
-                            <span class="compare-img checkPropagation" onclick="showAjaxModal('<?php echo site_url('addons/FCP_manager/coupon_FCP_show/'.$latest_course['coupon']); ?>', '<?php echo get_phrase('Coupon_Details'); ?>');">
+                            <button class="compare-img checkPropagation" >
                                 <img loading="lazy" src="<?php echo base_url('assets/frontend/default-new/image/compare.png') ?>">
                                 <?php echo get_phrase('Coupon_Code'); ?>
-                            </span>
+                            </button>
                         </div>
                     </div>
                     <div class="review-icon">
