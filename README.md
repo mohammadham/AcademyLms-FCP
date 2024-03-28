@@ -25,6 +25,7 @@ To activate this addon in your Academy LMS, follow these steps:
 ### Update navigation.php
 - **Path:** 'application/views/backend/admin/navigation.php'
 - **Line:** 82
+
 		  <!-- FCP Addon -->
 			  <?php if (addon_status('FCP')) : ?>
   				<li class="side-nav-item">
@@ -51,6 +52,7 @@ To activate this addon in your Academy LMS, follow these steps:
   				</li>
 			  <?php endif; ?>
 		<!-- FCP Addon -->
+
 ### Update header_lg_device.php
 - **Attention:** if you use lite version or old version use this part
 - **Path:** 'application/views/frontend/default-new/header_lg_device.php'
